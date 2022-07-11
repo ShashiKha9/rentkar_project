@@ -1,6 +1,8 @@
+import 'package:badges/badges.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:rentkar_project/screens/cartscreen_page.dart';
 import 'draggablefloatingaction_button.dart';
 import 'outlinedbutton.dart';
 
@@ -23,7 +25,15 @@ class MyMobileBody extends StatelessWidget {
           Icon(Icons.search_outlined),
           Padding(
               padding: EdgeInsets.only(left: 20.77,right: 30),
-              child: Icon(Icons.menu))
+              child: IconButton(onPressed: (){
+                Navigator.push(context, CupertinoPageRoute(builder: (context)=>CartScreenPage()));
+              }, icon: Badge(
+                position: BadgePosition(top: -16,end: -11),
+                badgeContent: Text(cartList.length.toString(),
+                  style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500),),
+                badgeColor: Colors.lightBlueAccent,
+                child: Icon(Icons.shopping_cart_outlined),
+              )))
         ],
       ),
       body:
