@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:rentkar_project/widget/mobile_body.dart';
+
+import '../widget/cartlist.dart';
 
 class CartScreenPage extends StatefulWidget {
   const CartScreenPage({Key? key}) : super(key: key);
@@ -7,14 +10,17 @@ class CartScreenPage extends StatefulWidget {
   @override
   State<CartScreenPage> createState() => _CartScreenPageState();
 }
-List<String> cartList=[];
+
 class _CartScreenPageState extends State<CartScreenPage> {
   List<int> counter= List.generate(20, (index) => 0);
   int minValue=0;
   int maxValue=100;
+  int total=0;
   @override
   Widget build(BuildContext context) {
-    int total= counter[0];
+    // for(int i =0;i<counter.length;i++){
+    //    total= counter[i];
+    // }
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
@@ -25,7 +31,7 @@ class _CartScreenPageState extends State<CartScreenPage> {
         children: [
           Expanded(
             child: ListView.builder(
-                itemCount: 5,
+                itemCount: mobileList.length,
                 itemBuilder:(context,index){
                   return Container(
                     margin: EdgeInsets.all(14),
@@ -38,7 +44,7 @@ class _CartScreenPageState extends State<CartScreenPage> {
                           alignment: Alignment.centerLeft,
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(12.0),
-                            child: Image.asset("assets/ps.png",
+                            child: Image.asset(mobileList[index].imageUrl,
                               height: 120,
                               width: 120,
                               fit: BoxFit.cover,),
@@ -59,6 +65,8 @@ class _CartScreenPageState extends State<CartScreenPage> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
+                              Text(mobileList[index].name,style: TextStyle(
+                                  fontSize: 12,fontWeight: FontWeight.w600,color: Colors.white),),
                               GestureDetector(
                                 onTap: (){
                                   setState((){
@@ -115,7 +123,7 @@ class _CartScreenPageState extends State<CartScreenPage> {
                 onPressed: ()=>print("text"),
                 child: Text("Checkout")),
           ),
-          Text(total.toStringAsFixed(3),style: TextStyle(color: Colors.white),)
+          Text(total.toString(),style: TextStyle(color: Colors.white),)
           
 
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rentkar_project/screens/cartscreen_page.dart';
+import 'package:rentkar_project/screens/homescreen_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +22,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primaryColor: Colors.black
       ),
-      home: CartScreenPage(),
+      home: HomeScreenPage(),
     );
   }
 }

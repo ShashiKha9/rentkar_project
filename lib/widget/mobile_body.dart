@@ -3,11 +3,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rentkar_project/screens/cartscreen_page.dart';
+import 'cartlist.dart';
 import 'draggablefloatingaction_button.dart';
 import 'outlinedbutton.dart';
+class MyMobileBody extends StatefulWidget{
+  MyMobileBodyState createState()=> MyMobileBodyState();
+}
+List<Cart>mobileList=[];
 
-class MyMobileBody extends StatelessWidget {
-   MyMobileBody({Key? key}) : super(key: key);
+class MyMobileBodyState extends State<MyMobileBody> {
   final Shader linearGradient = LinearGradient(
     colors: <Color>[Color(0xff1BACF4), Color(0xff19EEB5)],
   ).createShader(Rect.fromLTWH(27, 172, 244, 1));
@@ -29,7 +33,7 @@ class MyMobileBody extends StatelessWidget {
                 Navigator.push(context, CupertinoPageRoute(builder: (context)=>CartScreenPage()));
               }, icon: Badge(
                 position: BadgePosition(top: -16,end: -11),
-                badgeContent: Text(cartList.length.toString(),
+                badgeContent: Text(mobileList.length.toString(),
                   style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500),),
                 badgeColor: Colors.lightBlueAccent,
                 child: Icon(Icons.shopping_cart_outlined),
@@ -136,7 +140,7 @@ class MyMobileBody extends StatelessWidget {
                     height: 320,
                     child: ListView.builder(
                       padding: EdgeInsets.only(left: 6,right: 6),
-                        itemCount: 10,
+                        itemCount: 5,
                         shrinkWrap: true,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context,index){
@@ -154,7 +158,6 @@ class MyMobileBody extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-
                                 SizedBox(
                                   height: 8,
                                 ),
@@ -208,6 +211,11 @@ class MyMobileBody extends StatelessWidget {
 
 
                                       onPressed: (){
+                                        setState((){
+                                          print("shashi 1");
+                                          mobileList.add(cartList[index]);
+
+                                        });
 
                                       },
                                       child: Text("Rent Now",
